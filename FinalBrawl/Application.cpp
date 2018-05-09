@@ -8,6 +8,8 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 
+#include "ModuleSceneIntro.h"
+
 
 using namespace std;
 
@@ -22,6 +24,8 @@ Application::Application()
 	modules.push_back(audio = new ModuleAudio());
 
 	// Game Modules
+
+    modules.push_back(sceneIntro = new ModuleSceneIntro);
 
 	// Modules to draw on top of game logic
 	//modules.push_back(collision = new ModuleCollision());
@@ -49,7 +53,7 @@ bool Application::Init()
 	}
 
 	// Start the first scene --
-	//fade->FadeToBlack(scene_intro, nullptr, 3.0f);
+	fade->FadeToBlack(sceneIntro, nullptr, 3.0f);
 
 	return ret;
 }
@@ -57,19 +61,24 @@ bool Application::Init()
 update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
+    clock_t now = clock();
+    deltaTime += (float)(now - timer) / CLOCKS_PER_SEC;
+    if (deltaTime > 1 / FPS)
+    {
+        timer = now;
+        for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+            if ((*it)->IsEnabled() == true)
+                ret = (*it)->PreUpdate(deltaTime);
 
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-		if((*it)->IsEnabled() == true) 
-			ret = (*it)->PreUpdate();
+        for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+            if ((*it)->IsEnabled() == true)
+                ret = (*it)->Update(deltaTime);
 
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-		if((*it)->IsEnabled() == true) 
-			ret = (*it)->Update();
-
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-		if((*it)->IsEnabled() == true) 
-			ret = (*it)->PostUpdate();
-
+        for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+            if ((*it)->IsEnabled() == true)
+                ret = (*it)->PostUpdate(deltaTime);
+    }
+    LOG("Time since last frame = %f", (float)(clock() - now));
 	return ret;
 }
 

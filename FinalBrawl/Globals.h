@@ -43,11 +43,12 @@ typedef unsigned int uint;
 	 }
 
 // Configuration -----------
-#define SCREEN_SIZE 3
-#define SCREEN_WIDTH 384
-#define SCREEN_HEIGHT 240
+#define SCREEN_SIZE 1
+#define SCREEN_WIDTH 1440
+#define SCREEN_HEIGHT 810
 #define FULLSCREEN false
 #define VSYNC true
-#define TITLE "Super Awesome Game"
+#define TITLE "Final Brawl"
+#define FPS 60
 
 #endif //__GLOBALS_H__

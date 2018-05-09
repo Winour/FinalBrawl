@@ -39,7 +39,7 @@ bool ModuleRender::Init()
 	return ret;
 }
 
-update_status ModuleRender::PreUpdate()
+update_status ModuleRender::PreUpdate(float deltaTime)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(renderer);
@@ -47,7 +47,7 @@ update_status ModuleRender::PreUpdate()
 }
 
 // Called every draw update
-update_status ModuleRender::Update()
+update_status ModuleRender::Update(float deltaTime)
 {
 	// debug camera
 	int speed = 1;
@@ -67,7 +67,7 @@ update_status ModuleRender::Update()
 	return UPDATE_CONTINUE;
 }
 
-update_status ModuleRender::PostUpdate()
+update_status ModuleRender::PostUpdate(float deltaTime)
 {
 	SDL_RenderPresent(renderer);
 	return UPDATE_CONTINUE;
@@ -88,7 +88,7 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, float scale)
 {
 	bool ret = true;
 	SDL_Rect rect;
@@ -104,6 +104,9 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	{
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
+
+    rect.w = (int)(rect.w * scale);
+    rect.h = (int)(rect.h * scale);
 
 	rect.w *= SCREEN_SIZE;
 	rect.h *= SCREEN_SIZE;
@@ -129,9 +132,11 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	{
 		rec.x = (int)(camera.x + rect.x * SCREEN_SIZE);
 		rec.y = (int)(camera.y + rect.y * SCREEN_SIZE);
-		rec.w *= SCREEN_SIZE;
-		rec.h *= SCREEN_SIZE;
+
 	}
+
+    rec.w *= SCREEN_SIZE;
+    rec.h *= SCREEN_SIZE;
 
 	if (SDL_RenderFillRect(renderer, &rec) != 0)
 	{

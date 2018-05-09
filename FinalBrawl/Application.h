@@ -2,6 +2,7 @@
 #define __APPLICATION_CPP__
 
 #include<list>
+#include<time.h>
 #include "Globals.h"
 #include "Module.h"
 
@@ -13,6 +14,8 @@ class ModuleAudio;
 class ModuleFadeToBlack;
 class ModuleCollision;
 class ModuleParticles;
+
+class ModuleSceneIntro;
 
 
 class Application
@@ -36,9 +39,13 @@ public:
 	ModuleCollision* collision;
 	ModuleParticles* particles;
 
+    ModuleSceneIntro* sceneIntro;
+
 private:
 
 	std::list<Module*> modules;
+    clock_t timer = 0;
+    float deltaTime = 0;
 };
 
 extern Application* App;
