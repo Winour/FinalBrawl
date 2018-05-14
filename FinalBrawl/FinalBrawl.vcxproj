@@ -129,6 +129,7 @@
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />
+    <ClCompile Include="ModuleSceneMenu.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneIntro.h" />
+    <ClInclude Include="ModuleSceneMenu.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="Point.h" />

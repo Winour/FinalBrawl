@@ -46,6 +46,10 @@ update_status ModuleSceneIntro::Update(float deltaTime)
     {
         App->renderer->Blit(textureLogo, 200, 130, &testAnim.GetCurrentFrame(), 0.0f);
     }
+    if (testAnim.Finished())
+    {
+        App->fade->FadeToBlack((Module*)App->sceneMenu,this,0.0f);
+    }
     return UPDATE_CONTINUE;
 }
 

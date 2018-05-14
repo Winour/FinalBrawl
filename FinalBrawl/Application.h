@@ -16,6 +16,7 @@ class ModuleCollision;
 class ModuleParticles;
 
 class ModuleSceneIntro;
+class ModuleSceneMenu;
 
 
 class Application
@@ -40,6 +41,7 @@ public:
 	ModuleParticles* particles;
 
     ModuleSceneIntro* sceneIntro;
+    ModuleSceneMenu* sceneMenu;
 
 private:
 

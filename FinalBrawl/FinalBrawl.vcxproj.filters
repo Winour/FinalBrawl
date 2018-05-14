@@ -51,6 +51,7 @@
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Game Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleSceneMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ModuleWindow.h">
@@ -101,5 +102,6 @@
     <ClInclude Include="ModuleSceneIntro.h">
       <Filter>Game Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneMenu.h" />
   </ItemGroup>
 </Project>
