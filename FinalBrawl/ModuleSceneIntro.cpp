@@ -19,11 +19,6 @@ ModuleSceneIntro::ModuleSceneIntro(bool active) : Module(active)
 
     testAnim.speed = 0.1f;
     testAnim.loop = false;
-
-    background.x = 0;
-    background.y = 0;
-    background.w = SCREEN_WIDTH;
-    background.h = SCREEN_HEIGHT;
 }
 
 
@@ -41,7 +36,7 @@ bool ModuleSceneIntro::Start()
 
 update_status ModuleSceneIntro::Update(float deltaTime)
 {
-    App->renderer->DrawQuad(background, (Uint8)160, (Uint8)190, (Uint8)255, (Uint8)255, false);
+    App->renderer->DrawBackground((Uint8)160, (Uint8)190, (Uint8)255, (Uint8)255);
     if (!App->fade->isFading())
     {
         App->renderer->Blit(textureLogo, 200, 130, &testAnim.GetCurrentFrame(), 0.0f);

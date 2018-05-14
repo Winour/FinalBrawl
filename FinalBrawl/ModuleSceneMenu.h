@@ -19,7 +19,6 @@ public:
     bool CleanUp();
 
 private: 
-    SDL_Rect background;
     SDL_Rect title;
     SDL_Rect newGame;
     SDL_Rect exit;

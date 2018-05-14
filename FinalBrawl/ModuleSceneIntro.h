@@ -22,7 +22,6 @@ private:
 
     SDL_Texture* textureLogo = nullptr;
     Animation testAnim;
-    SDL_Rect background;
 };
 
 #endif // !__MODULESCENEINTRO_H__
