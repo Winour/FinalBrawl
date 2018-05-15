@@ -3,6 +3,7 @@
 
 #include "MemLeaks.h"
 #include "SDL/include/SDL_rect.h"
+#include "nlohmann\json.hpp"
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 
@@ -20,6 +21,7 @@ enum update_status
 
 // Useful typedefs ---------
 typedef unsigned int uint;
+typedef nlohmann::json Json;
 
 // Deletes a buffer
 #define RELEASE( x ) \

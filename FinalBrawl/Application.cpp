@@ -24,6 +24,8 @@ Application::Application()
 	modules.push_back(textures = new ModuleTextures());
 	modules.push_back(audio = new ModuleAudio());
 
+    saveTools = new SaveTools();
+
 	// Game Modules
 
     modules.push_back(sceneIntro = new ModuleSceneIntro());
@@ -55,7 +57,7 @@ bool Application::Init()
 	}
 
 	// Start the first scene --
-	fade->FadeToBlack(sceneIntro, nullptr, 3.0f);
+	fade->FadeToBlack(sceneIntro, nullptr, 0.5f);
 
 	return ret;
 }

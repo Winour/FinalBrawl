@@ -5,6 +5,7 @@
 #include<time.h>
 #include "Globals.h"
 #include "Module.h"
+#include "SaveTools.h"
 
 class ModuleRender;
 class ModuleWindow;
@@ -42,6 +43,8 @@ public:
 
     ModuleSceneIntro* sceneIntro;
     ModuleSceneMenu* sceneMenu;
+
+    SaveTools* saveTools;
 
 private:
 

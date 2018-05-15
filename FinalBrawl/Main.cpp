@@ -23,10 +23,19 @@ int main(int argc, char ** argv)
 {
     ReportMemoryLeaks();
 
-    nlohmann::json jeison;
+    Json jeison;
 
-    jeison["a"] = 35;
-    std::ofstream file("jaja.txt");
+    std::ifstream file("jaja.txt");
+    if (file.good())
+    {
+        jeison << file;
+        jeison["b"] = 6;
+        jeison["a"] = 87;
+        std::ofstream fole("jaja.txt");
+        fole << jeison;
+        file.close();
+        fole.close();
+    }
 
 
     int main_return = EXIT_FAILURE;

@@ -35,16 +35,14 @@ bool ModuleSceneIntro::Start()
 
 update_status ModuleSceneIntro::Update(float deltaTime)
 {
-
-
     App->renderer->DrawBackground((Uint8)160, (Uint8)190, (Uint8)255, (Uint8)255);
     if (!App->fade->isFading())
     {
         App->renderer->Blit(textureLogo, 200, 130, &testAnim.GetCurrentFrame(), 0.0f);
     }
-    if (testAnim.Finished())
+    if (testAnim.Finished() && !App->fade->isFading())
     {
-        App->fade->FadeToBlack((Module*)App->sceneMenu,this,0.0f);
+        App->fade->FadeToBlack((Module*)App->sceneMenu,this,1.0f);
     }
     return UPDATE_CONTINUE;
 }

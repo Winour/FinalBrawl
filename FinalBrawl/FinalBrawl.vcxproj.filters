@@ -107,5 +107,8 @@
     <ClInclude Include="ModuleSceneMenu.h">
       <Filter>Game Modules</Filter>
     </ClInclude>
+    <ClInclude Include="SaveTools.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

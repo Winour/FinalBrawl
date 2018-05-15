@@ -5,6 +5,9 @@
 #include "Globals.h"
 #include "Point.h"
 #include "Animation.h"
+#include "nlohmann\json.hpp"
+#include <fstream>
+#include <string>
 
 struct SDL_Texture;
 
@@ -22,8 +25,18 @@ private:
     SDL_Rect title;
     SDL_Rect newGame;
     SDL_Rect exit;
+    iPoint titlePos;
+    iPoint newGamePos;
+    iPoint creditsPos;
+    iPoint exitPos;
 
-    SDL_Texture* menuTextures;
+    std::vector<std::string> mainMenuObjects;
+    std::vector<iPoint*> positions;
+    int id = 0;
+    int idNumber = 4;
+    Json jsonFile;
+
+    SDL_Texture* menuTextures = nullptr;
 };
 
 #endif // !__MODULESCENEMENU_H__
