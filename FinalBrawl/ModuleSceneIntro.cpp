@@ -6,7 +6,6 @@
 #include "ModuleSceneIntro.h"
 
 
-
 ModuleSceneIntro::ModuleSceneIntro(bool active) : Module(active)
 {
     for (int i = 0; i < 3; i++)
@@ -36,6 +35,8 @@ bool ModuleSceneIntro::Start()
 
 update_status ModuleSceneIntro::Update(float deltaTime)
 {
+
+
     App->renderer->DrawBackground((Uint8)160, (Uint8)190, (Uint8)255, (Uint8)255);
     if (!App->fade->isFading())
     {

@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "Application.h"
 #include "Globals.h"
+#include "nlohmann\json.hpp"
+#include <fstream>
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -20,6 +22,12 @@ Application* App = nullptr;
 int main(int argc, char ** argv)
 {
     ReportMemoryLeaks();
+
+    nlohmann::json jeison;
+
+    jeison["a"] = 35;
+    std::ofstream file("jaja.txt");
+
 
     int main_return = EXIT_FAILURE;
     main_states state = MAIN_CREATION;
