@@ -7,7 +7,7 @@
 
 
 
-ModuleSceneMenu::ModuleSceneMenu(bool active) : Module(active)
+ModuleSceneMenu::ModuleSceneMenu(bool active) : ModuleScene(active)
 {
     title.x = 0;
     title.y = 0;
@@ -31,35 +31,24 @@ ModuleSceneMenu::~ModuleSceneMenu()
 bool ModuleSceneMenu::Start()
 {
     menuTextures = App->textures->Load("GUISprites/Menu.png");
-    std::ifstream file("MenuGuiPos.txt");
-    if (file.good())
-    {
-        file >> jsonFile;
-        for (int i = 0; i < idNumber; i++)
-        {
-            App->saveTools->LoadGUIPosition(jsonFile, mainMenuObjects[i], *positions[i]);
-        }
-        
-    }
+    LoadGUI("MenuGuiPos.txt");
+    canEdit = false;
+    id = 0;
 
     return true;
 }
 
 update_status ModuleSceneMenu::Update(float deltaTime)
 {
-    if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+    if (App->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
     {
-        ++id;
-        id = (id >= idNumber) ? 0 : id;
+        canEdit = !canEdit;
     }
-    std::ofstream file("MenuGuiPos.txt");
-    if (file.good())
-    {
-        jsonFile >> file;
-    }
+    SaveGUI("MenuGuiPos.txt");
 
     App->renderer->DrawBackground(0, 0, 255, 255);
     App->renderer->Blit(menuTextures, titlePos.x, titlePos.y, &title);
+
     return UPDATE_CONTINUE;
 }
 

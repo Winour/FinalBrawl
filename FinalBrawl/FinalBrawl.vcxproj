@@ -146,6 +146,7 @@
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleRender.h" />
+    <ClInclude Include="ModuleScene.h" />
     <ClInclude Include="ModuleSceneIntro.h" />
     <ClInclude Include="ModuleSceneMenu.h" />
     <ClInclude Include="ModuleTextures.h" />
