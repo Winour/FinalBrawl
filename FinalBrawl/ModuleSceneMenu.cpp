@@ -13,11 +13,27 @@ ModuleSceneMenu::ModuleSceneMenu(bool active) : ModuleScene(active)
     title.y = 0;
     title.w = 959;
     title.h = 200;
+    newGame.x = 0;
+    newGame.y = 204;
+    newGame.w = 539;
+    newGame.h = 84;
+    credits.x = 0;
+    credits.y = 301;
+    credits.w = 328;
+    credits.h = 78;
+    exit.x = 0;
+    exit.y = 392;
+    exit.w = 200;
+    exit.h = 72;
 
-    mainMenuObjects.push_back("MainTitle");
-    mainMenuObjects.push_back("NewGame");
-    mainMenuObjects.push_back("Credits");
-    mainMenuObjects.push_back("Exit");
+    rects.push_back(&title);
+    rects.push_back(&newGame);
+    rects.push_back(&credits);
+    rects.push_back(&exit);
+    guiObjects.push_back("MainTitle");
+    guiObjects.push_back("NewGame");
+    guiObjects.push_back("Credits");
+    guiObjects.push_back("Exit");
     positions.push_back(&titlePos);
     positions.push_back(&newGamePos);
     positions.push_back(&creditsPos);
@@ -47,7 +63,7 @@ update_status ModuleSceneMenu::Update(float deltaTime)
     SaveGUI("MenuGuiPos.txt");
 
     App->renderer->DrawBackground(0, 0, 255, 255);
-    App->renderer->Blit(menuTextures, titlePos.x, titlePos.y, &title);
+    DrawGUI(*menuTextures);
 
     return UPDATE_CONTINUE;
 }

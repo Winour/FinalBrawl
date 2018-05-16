@@ -1,1 +1,1 @@
-{"Credits":{"x":20,"y":20},"Exit":{"x":20,"y":20},"MainTitle":{"x":-76,"y":-62},"NewGame":{"x":20,"y":20}}
+{"Credits":{"x":501,"y":531},"Exit":{"x":560,"y":660},"MainTitle":{"x":218,"y":8},"NewGame":{"x":413,"y":410}}

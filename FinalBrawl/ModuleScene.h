@@ -18,13 +18,12 @@ public:
     }
     bool EditGUI()
     {
-        LOG("%d", positions.size());
         bool ret = false;
 
         if (App->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
         {
             ++id;
-            id = (id >= mainMenuObjects.size()) ? 0 : id;
+            id = (id >= guiObjects.size()) ? 0 : id;
         }
         if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
         {
@@ -55,9 +54,9 @@ public:
         if (file.good())
         {
             file >> jsonFile;
-            for (int i = 0; i < mainMenuObjects.size(); i++)
+            for (int i = 0; i < guiObjects.size(); i++)
             {
-                App->saveTools->LoadGUIPosition(jsonFile, mainMenuObjects[i], *positions[i]);
+                App->saveTools->LoadGUIPosition(jsonFile, guiObjects[i], *positions[i]);
             }
             return true;
         }
@@ -71,15 +70,24 @@ public:
             std::ofstream file(path);
             if (file.good())
             {
-                App->saveTools->SaveGUIPosition(jsonFile, mainMenuObjects[id], *positions[id]);
+                App->saveTools->SaveGUIPosition(jsonFile, guiObjects[id], *positions[id]);
                 jsonFile >> file;
             }
         }
     }
+    
+    void DrawGUI(SDL_Texture& texture)
+    {
+        for (int i = 0; i < guiObjects.size(); i++)
+        {
+            App->renderer->Blit(&texture, positions[i]->x, positions[i]->y, rects[i]);
+        }
+    }
 
 protected:
-    std::vector<std::string> mainMenuObjects;
+    std::vector<std::string> guiObjects;
     std::vector<iPoint*> positions;
+    std::vector<SDL_Rect*> rects;
     bool canEdit;
     Json jsonFile;
     int id;
