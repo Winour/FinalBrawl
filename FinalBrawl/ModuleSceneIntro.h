@@ -1,14 +1,14 @@
 #ifndef __MODULESCENEINTRO_H__
 #define __MODULESCENEINTRO_H__
 
-#include "Module.h"
+#include "ModuleScene.h"
 #include "Globals.h"
 #include "Point.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class ModuleSceneIntro : public Module
+class ModuleSceneIntro : public ModuleScene
 {
 public:
     ModuleSceneIntro(bool active = true);
@@ -21,7 +21,8 @@ public:
 private:
 
     SDL_Texture* textureLogo = nullptr;
-    Animation testAnim;
+    iPoint logoPos;
+    Animation logoAnim;
 };
 
 #endif // !__MODULESCENEINTRO_H__

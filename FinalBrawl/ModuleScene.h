@@ -11,11 +11,14 @@ class ModuleScene : public Module
 public:
     ModuleScene(bool active = true) : Module(active)
     {
+        id = 0;
+        canEdit = false;
     }
 
     ~ModuleScene()
     {
     }
+
     bool EditGUI()
     {
         bool ret = false;
@@ -48,6 +51,14 @@ public:
         return ret;
     }
     
+    void ActivateEdition()
+    {
+        if (App->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
+        {
+            canEdit = !canEdit;
+        }
+    }
+
     bool LoadGUI(const char* path)
     {
         std::ifstream file(path);

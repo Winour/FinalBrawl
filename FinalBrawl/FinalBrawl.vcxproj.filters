@@ -110,6 +110,8 @@
     <ClInclude Include="SaveTools.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleScene.h" />
+    <ClInclude Include="ModuleScene.h">
+      <Filter>Core Modules</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

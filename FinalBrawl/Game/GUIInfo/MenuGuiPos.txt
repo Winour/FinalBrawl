@@ -1,0 +1,1 @@
+{"Credits":{"x":501,"y":531},"Background":{"x":0,"y":0},"Exit":{"x":560,"y":660},"MainTitle":{"x":212,"y":8},"NewGame":{"x":413,"y":410}}

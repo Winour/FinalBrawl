@@ -9,6 +9,10 @@
 
 ModuleSceneMenu::ModuleSceneMenu(bool active) : ModuleScene(active)
 {
+    background.x = 0;
+    background.y = 477;
+    background.w = 1440;
+    background.h = 810;
     title.x = 0;
     title.y = 0;
     title.w = 959;
@@ -26,14 +30,17 @@ ModuleSceneMenu::ModuleSceneMenu(bool active) : ModuleScene(active)
     exit.w = 200;
     exit.h = 72;
 
+    rects.push_back(&background);
     rects.push_back(&title);
     rects.push_back(&newGame);
     rects.push_back(&credits);
     rects.push_back(&exit);
+    guiObjects.push_back("Background");
     guiObjects.push_back("MainTitle");
     guiObjects.push_back("NewGame");
     guiObjects.push_back("Credits");
     guiObjects.push_back("Exit");
+    positions.push_back(&backgroundPos);
     positions.push_back(&titlePos);
     positions.push_back(&newGamePos);
     positions.push_back(&creditsPos);
@@ -47,20 +54,15 @@ ModuleSceneMenu::~ModuleSceneMenu()
 bool ModuleSceneMenu::Start()
 {
     menuTextures = App->textures->Load("GUISprites/Menu.png");
-    LoadGUI("MenuGuiPos.txt");
-    canEdit = false;
-    id = 0;
+    LoadGUI("GUIInfo/MenuGuiPos.txt");
 
     return true;
 }
 
 update_status ModuleSceneMenu::Update(float deltaTime)
 {
-    if (App->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
-    {
-        canEdit = !canEdit;
-    }
-    SaveGUI("MenuGuiPos.txt");
+    ActivateEdition();
+    SaveGUI("GUIInfo/MenuGuiPos.txt");
 
     App->renderer->DrawBackground(0, 0, 255, 255);
     DrawGUI(*menuTextures);

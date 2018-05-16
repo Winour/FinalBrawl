@@ -25,11 +25,13 @@ private:
 
 
 private: 
-    SDL_Texture * menuTextures = nullptr;
+    SDL_Texture* menuTextures = nullptr;
+    SDL_Rect background;
     SDL_Rect title;
     SDL_Rect newGame;
     SDL_Rect credits;
     SDL_Rect exit;
+    iPoint backgroundPos;
     iPoint titlePos;
     iPoint newGamePos;
     iPoint creditsPos;
